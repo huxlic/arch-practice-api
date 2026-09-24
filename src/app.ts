@@ -1,5 +1,5 @@
 import express, {type Express, type Request, type Response} from "express"
-import {errorHandler, notFoundHandler} from "./common/middlewares/error-handler.js";
+import {errorHandler, notFoundHandler} from "./common/middleware/error-handler.js";
 import {AppError} from "./common/errors/app-error.js";
 
 const app: Express = express();
