@@ -3,7 +3,7 @@ import {config} from "../../config/index.js";
 
 const {host, user, password, name} = config.db;
 
-const db = mysql.createPool({
+export const db = mysql.createPool({
 	host: host,
 	user: user,
 	password: password,
@@ -19,8 +19,11 @@ const db = mysql.createPool({
 
 export const testConnection = async () => {
 	const conn = await db.getConnection();
-	await conn.ping();
-	conn.release();
+	try {
+		await conn.ping();
+	} catch (e) {
+		throw new Error(`Failed to connect to the database: ${e}`);
+	} finally {
+		conn.release();
+	}
 }
-
-export default db;
