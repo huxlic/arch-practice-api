@@ -10,8 +10,8 @@ const startServer = async (): Promise<void> => {
 		app.listen(PORT, () => {
 			console.log(`App listening on port ${PORT}`)
 		})
-	} catch (e) {
-		console.error("Failed to start server", e);
+	} catch (err) {
+		console.error("Failed to start the server", err);
 	}
 }
 

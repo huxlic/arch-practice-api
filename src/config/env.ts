@@ -8,5 +8,5 @@ const ConnectionSchema = z.object({
 	DB_NAME: z.string(),
 })
 
-type Connection = z.infer<typeof ConnectionSchema>
+// type EnvConnection = z.infer<typeof ConnectionSchema>
 export const env = ConnectionSchema.parse(process.env)

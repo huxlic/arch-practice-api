@@ -1,6 +1,6 @@
 import express, {type Express, type Request, type Response} from "express"
 import {errorHandler, notFoundHandler} from "./common/middleware/error-handler.js";
-import {AppError} from "./common/errors/app-error.js";
+import userRouter from "./modules/user/user.routes.js";
 
 const app: Express = express();
 
@@ -11,6 +11,8 @@ app.get("/health", (_req: Request, res: Response) => {
 		status: "OK",
 	})
 })
+
+app.use(userRouter);
 
 app.use(notFoundHandler)
 app.use(errorHandler)
