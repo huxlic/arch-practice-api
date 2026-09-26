@@ -17,3 +17,16 @@ export const create = async (input: Omit<User, "id" | "password" | "created_at" 
 		throw err;
 	}
 }
+
+export const getById = async (id: string): Promise<User> => {
+	if (!id) throw new AppError("User ID is required", 400);
+	
+	const user = await UserRepository.findById(id);
+	if (!user) throw new AppError("User with the ID does not exist", 404);
+	
+	return user;
+}
+
+export const getAll = async (): Promise<User[]> => {
+	return await UserRepository.findAll()
+}
